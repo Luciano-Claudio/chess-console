@@ -28,7 +28,6 @@ namespace xadrez
         public override bool[,] MovimentosPossiveis()
         {
             bool[,] mat = new bool[Tab.Linhas, Tab.Colunas];
-
             Posicao pos = new Posicao(0, 0);
 
             if (Cor == Cor.Branca)
@@ -39,8 +38,7 @@ namespace xadrez
                     mat[pos.Linha, pos.Coluna] = true;
                 }
                 pos.DefinitValores(Posicao.Linha - 2, Posicao.Coluna);
-                Posicao p2 = new Posicao(Posicao.Linha - 1, Posicao.Coluna);
-                if (Tab.PosicaoValida(p2) && Livre(p2) && Tab.PosicaoValida(pos) && Livre(pos) && QteMovimentos == 0)
+                if (Tab.PosicaoValida(pos) && Livre(pos) && QteMovimentos == 0)
                 {
                     mat[pos.Linha, pos.Coluna] = true;
                 }
@@ -63,8 +61,7 @@ namespace xadrez
                     mat[pos.Linha, pos.Coluna] = true;
                 }
                 pos.DefinitValores(Posicao.Linha + 2, Posicao.Coluna);
-                Posicao p2 = new Posicao(Posicao.Linha + 1, Posicao.Coluna);
-                if (Tab.PosicaoValida(p2) && Livre(p2) && Tab.PosicaoValida(pos) && Livre(pos) && QteMovimentos == 0)
+                if (Tab.PosicaoValida(pos) && Livre(pos) && QteMovimentos == 0)
                 {
                     mat[pos.Linha, pos.Coluna] = true;
                 }
