@@ -2,11 +2,14 @@
 
 namespace xadrez
 {
+
     class Bispo : Peca
     {
-        public Bispo(Tabuleiro tab, Cor cor) : base(tab, cor)
+
+        public Bispo(Tabuleiro Tab, Cor cor) : base(Tab, cor)
         {
         }
+
         public override string ToString()
         {
             return "B";
@@ -17,9 +20,11 @@ namespace xadrez
             Peca p = Tab.Peca(pos);
             return p == null || p.Cor != Cor;
         }
+
         public override bool[,] MovimentosPossiveis()
         {
             bool[,] mat = new bool[Tab.Linhas, Tab.Colunas];
+
             Posicao pos = new Posicao(0, 0);
 
             // NO
@@ -31,8 +36,9 @@ namespace xadrez
                 {
                     break;
                 }
-                pos.DefinitValores(Posicao.Linha - 1, Posicao.Coluna - 1);
+                pos.DefinitValores(pos.Linha - 1, pos.Coluna - 1);
             }
+
             // NE
             pos.DefinitValores(Posicao.Linha - 1, Posicao.Coluna + 1);
             while (Tab.PosicaoValida(pos) && PodeMover(pos))
@@ -42,8 +48,9 @@ namespace xadrez
                 {
                     break;
                 }
-                pos.DefinitValores(Posicao.Linha - 1, Posicao.Coluna + 1);
+                pos.DefinitValores(pos.Linha - 1, pos.Coluna + 1);
             }
+
             // SE
             pos.DefinitValores(Posicao.Linha + 1, Posicao.Coluna + 1);
             while (Tab.PosicaoValida(pos) && PodeMover(pos))
@@ -53,8 +60,9 @@ namespace xadrez
                 {
                     break;
                 }
-                pos.DefinitValores(Posicao.Linha + 1, Posicao.Coluna + 1);
+                pos.DefinitValores(pos.Linha + 1, pos.Coluna + 1);
             }
+
             // SO
             pos.DefinitValores(Posicao.Linha + 1, Posicao.Coluna - 1);
             while (Tab.PosicaoValida(pos) && PodeMover(pos))
@@ -64,8 +72,9 @@ namespace xadrez
                 {
                     break;
                 }
-                pos.DefinitValores(Posicao.Linha + 1, Posicao.Coluna - 1);
+                pos.DefinitValores(pos.Linha + 1, pos.Coluna - 1);
             }
+
             return mat;
         }
     }
